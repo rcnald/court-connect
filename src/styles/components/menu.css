@@ -1,0 +1,15 @@
+.c-menu {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+    flex: 1;
+
+    .c-menu__item {
+        display: flex;
+        max-height: 40px;
+        width: 100%;
+
+
+        
+    }
+}

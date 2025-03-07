@@ -1,0 +1,38 @@
+.c-submenu {
+    width: 100%;
+    position: relative;
+    border-radius: 6px 6px 0 0;
+
+    &:hover {
+        background-color: rgb(32, 67, 67);
+
+        .c-submenu__name {
+            background-color: rgb(32, 67, 67);
+            
+            .o-item__name {
+                color: #FFF;
+            }
+
+        }
+
+        .c-submenu__menu {
+            
+            display: block;
+        }
+
+        
+    }
+
+    .c-submenu__menu {
+        display: none;
+        position: absolute;
+        width: 100%;
+        background-color: rgb(32, 67, 67);
+        border-radius: 0px 0px 6px 6px;
+        padding-bottom: 12px;
+    }
+
+    .c-submenu__item {
+        width: 100%;
+    }
+}

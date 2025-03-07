@@ -1,0 +1,10 @@
+.o-navigation {
+    display: flex;
+    padding-inline: 16px;
+    padding-block: 24px;
+    background: #FFF;
+    width: 100%;
+    max-width: 750px;
+    border-radius: 8px;
+    filter: drop-shadow(1px 0px 1px #000000);
+}
