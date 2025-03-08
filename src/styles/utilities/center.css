@@ -1,7 +1,6 @@
-.o-header {
-    width: 100%;
+.u-center {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 16px;
+    min-height: 100vh;
 }
