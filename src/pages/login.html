@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
+    <script src="../scripts/main.js" defer></script>
     <title>Login</title>
 </head>
 <body class="u-center">
     <main class="o-main">
-        <form class="c-form" action="">
+        <form class="c-form" id="login-form" method="post">
             <fieldset>
                 <legend class="c-form__title">Login</legend>
                 <p>Preencha todos os campos devidamente.</p>
 
                 <div>
-                    <label class="o-input" for="email">
+                    <label class="o-input" for="login-email">
                         <img src="../assets/mail.svg" alt="">
-                        <input type="text" name="email" id="email" placeholder="Insira seu E-mail">
+                        <input type="text" name="email" id="login-email" placeholder="Insira seu E-mail">
                     </label>
-                    <label class="o-input" for="senha">
+                    <label class="o-input" for="login-password">
                         <img src="../assets/key.svg" alt="">
-                        <input type="text" name="senha" id="senha" placeholder="Insira sua senha">
+                        <input type="text" name="senha" id="login-password" placeholder="Insira sua senha">
                     </label>
                 </div>
             </fieldset>
 
-            <button class="c-form__button">Login</button>
+            <button class="c-form__button" id="login-submit">Login</button>
         </form>
         <div>
             <h1>Bem-vindo de volta!</h1>
