@@ -81,48 +81,48 @@ O sistema visa automatizar o agendamento de eventos esportivos, proporcionando a
 
 ## 4. Requisitos Funcionais
 
-- **RF001 – Cadastro de jogadores**  
+- [ ] **RF001 – Cadastro de jogadores**  
   Tela com nome, e-mail, CPF e senha. Link para login se já for cadastrado.
 
-- **RF002 – Login de jogadores**  
+- [x] **RF002 – Login de jogadores**  
   Tela de login com e-mail e senha, com link para cadastro e recuperação de senha.
 
-- **RF003 – Visualização de equipes**  
+- [ ] **RF003 – Visualização de equipes**  
   Tela que liste as equipes com nome, treinador, status (aberto/concluído), posições (levantador, ponteiro, central, oposto e líbero), data, horário e local.
 
-- **RF004 – Inscrição de jogadores**  
+- [ ] **RF004 – Inscrição de jogadores**  
   Jogadores podem se inscrever em posições disponíveis.
 
-- **RF005 – Desinscrição de jogadores**  
+- [ ] **RF005 – Desinscrição de jogadores**  
   Jogadores podem se desinscrever da equipe.
 
-- **RF006 – Visualização de inscrições**  
+- [ ] **RF006 – Visualização de inscrições**  
   Tela com inscrições ativas, com detalhes e link para equipe.
 
 ---
 
 ## 5. Regras de Negócio
 
-- **RN001 – Visualização de equipes**  
+- [ ] **RN001 – Visualização de equipes**  
   Apenas equipes com vagas disponíveis devem ser exibidas.
 
-- **RN002 – Inscrição em equipes**  
+- [ ] **RN002 – Inscrição em equipes**  
   Jogador só pode se inscrever em uma posição por equipe, e apenas se ela estiver livre.
 
-- **RN003 – Desinscrição em equipes**  
+- [ ] **RN003 – Desinscrição em equipes**  
   Permitida apenas enquanto a equipe estiver com status "aberto".
 
-- **RN004 – Visualização de inscrições ativas**  
+- [ ] **RN004 – Visualização de inscrições ativas**  
   Jogador só pode visualizar suas próprias inscrições ativas.
 
 ---
 
 ## 6. Requisitos Não Funcionais
 
-- **RNF001 – Persistência dos dados de login**  
+- [ ] **RNF001 – Persistência dos dados de login**  
   Autenticação armazenada em Local Storage.
 
-- **RNF002 – Layout responsivo**  
+- [ ] **RNF002 – Layout responsivo**  
   Sistema deve funcionar bem em desktop, tablet e mobile.
 
 ---
