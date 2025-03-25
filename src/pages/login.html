@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/main.css">
-    <script src="../scripts/main.js" defer></script>
-    <title>Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../src/script.js" defer></script>
+  <title>Login</title>
 </head>
-<body class="u-center">
-    <main class="o-main">
-        <form class="c-form" id="login-form" method="post">
-            <fieldset>
-                <legend class="c-form__title">Login</legend>
-                <p>Preencha todos os campos devidamente.</p>
 
-                <div>
-                    <label class="o-input" for="login-email">
-                        <img src="../assets/mail.svg" alt="">
-                        <input type="text" name="email" id="login-email" placeholder="Insira seu E-mail">
-                    </label>
-                    <label class="o-input" for="login-password">
-                        <img src="../assets/key.svg" alt="">
-                        <input type="text" name="senha" id="login-password" placeholder="Insira sua senha">
-                    </label>
-                </div>
-            </fieldset>
+<body>
+  <main>
+    <div>
+      <img src="../assets/logo.svg" alt="">
+      <span>Court <b>Connect</b></span>
+    </div>
+    <form action="">
+      <fieldset>
+        <legend><span>Login</span> to your account</legend>
+        <p>Enter your email below to login to your account.</p>
+        <label for="">
+          <span>Email</span>
+          <input type="text" name="" id="">
+        </label>
 
-            <button class="c-form__button" id="login-submit">Login</button>
-        </form>
-        <div>
-            <h1>Bem-vindo de volta!</h1>
-            <span>Faça login para <b>continuar.</b></span>
-        </div>
-    </main>
+        <label for="">
+          <span>Password</span>
+          <input type="text" name="" id="">
+        </label>
+      </fieldset>
+     
+      <button>Entrar</button>
+
+      <span>
+        <a href="">Forgot your password?</a>
+        Don't have an account?
+        <a href="">Sign up</a>
+      </span>
+    </form>
+  </main>
 </body>
 </html>
