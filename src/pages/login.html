@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">
+    <script src="../script.js" defer></script>
     <title>Court Connect | Login</title>
   </head>
   
@@ -14,27 +15,27 @@
         <img class="logo__icon" src="../assets/logo.svg" alt="">
         <span class="logo__name">Court <b>Connect</b></span>
       </div>
-      <form class="form" action="">
+      <form class="form" id="login-form">
         <fieldset class="form__container">
-          <legend class="form__title"><span>Login</span> to your account</legend>
-          <p class="form__description">Enter your email below to login to your account.</p>
+          <legend class="form__title"><span>Entrar</span> na sua conta</legend>
+          <p class="form__description">Insira seu email abaixo para entrar na sua conta.</p>
           <label class="form__input" for="">
             <span>Email</span>
-            <input type="text" name="" id="" placeholder="a@gmail.com">
+            <input type="email" name="email" id="" placeholder="email@address.com">
           </label>
   
           <label class="form__input" for="">
-            <span>Password</span>
-            <input type="text" name="" id="">
+            <span>Senha</span>
+            <input type="password" name="password" id="" placeholder="Insira sua senha">
           </label>
         </fieldset>
   
-        <button class="form__button">Entrar</button>
+        <button form="login-form" type="submit" class="form__button">Entrar</button>
   
         <span class="form__links">
-          <a href="">Forgot your password?</a>
-          Don't have an account?
-          <a href="./cadastro.html">Sign up</a>
+          <a href="">Esqueceu sua senha?</a>
+          Não tem uma conta?
+          <a href="./cadastro.html">Cadastre-se</a>
         </span>
       </form>
     </main>
