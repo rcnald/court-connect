@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">
+    <script src="../js/register.js" type="module" defer></script>
+    <title>Court Connect | Cadastro</title>
+  </head>
+  
+  <body>
+    <main>
+      <div class="logo">
+        <img class="logo__icon" src="../assets/logo.svg" alt="">
+        <span class="logo__name">Court <b>Connect</b></span>
+      </div>
+      <form class="form" id="register-form">
+        <fieldset class="form__container">
+          <legend class="form__title"><span>Criar</span> nova conta</legend>
+          <p class="form__description">Insira suas informações para criar uma conta.</p>
+          <label class="form__input" for="register-email">
+            <span>Email</span>
+            <input type="email" name="email" id="register-email" placeholder="email@address.com">
+            <span class="input-error" id="register-email-error"></span>
+          </label>
+  
+          <label class="form__input" for="register-cpf">
+            <span>CPF</span>
+            <input type="text" name="cpf" id="register-cpf" placeholder="000.000.000-00">
+            <span class="input-error" id="register-cpf-error"></span>
+          </label>
+  
+          <label class="form__input" for="register-password">
+            <span>Senha</span>
+            <input type="password" name="password" id="register-password" placeholder="Insira sua senha">
+            <span class="input-error" id="register-password-error"></span>
+          </label>
+
+          <label class="form__input" for="register-confirm-password">
+            <span>Confirm senha</span>
+            <input type="password" name="confirm_password" id="register-confirm-password" placeholder="Confirme sua senha">
+            <span class="input-error" id="register-confirm-password-error"></span>
+          </label>
+        </fieldset>
+  
+        <button type="submit" class="form__button">Criar conta</button>
+  
+        <span class="form__links">
+          Já tem uma conta?
+          <a href="./login.html">Entre</a>
+        </span>
+      </form>
+    </main>
+  </body>
+</html>

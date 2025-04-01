@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/main.css">
-    <script src="../scripts/main.js" defer></script>
-    <title>Login</title>
-</head>
-<body class="u-center">
-    <main class="o-main">
-        <form class="c-form" id="login-form" method="post">
-            <fieldset>
-                <legend class="c-form__title">Login</legend>
-                <p>Preencha todos os campos devidamente.</p>
-
-                <div>
-                    <label class="o-input" for="login-email">
-                        <img src="../assets/mail.svg" alt="">
-                        <input type="text" name="email" id="login-email" placeholder="Insira seu E-mail">
-                    </label>
-                    <label class="o-input" for="login-password">
-                        <img src="../assets/key.svg" alt="">
-                        <input type="text" name="senha" id="login-password" placeholder="Insira sua senha">
-                    </label>
-                </div>
-            </fieldset>
-
-            <button class="c-form__button" id="login-submit">Login</button>
-        </form>
-        <div>
-            <h1>Bem-vindo de volta!</h1>
-            <span>Faça login para <b>continuar.</b></span>
-        </div>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">
+    <script src="../script.js" defer></script>
+    <title>Court Connect | Login</title>
+  </head>
+  
+  <body>
+    <main>
+      <div class="logo">
+        <img class="logo__icon" src="../assets/logo.svg" alt="">
+        <span class="logo__name">Court <b>Connect</b></span>
+      </div>
+      <form class="form" id="login-form">
+        <fieldset class="form__container">
+          <legend class="form__title"><span>Entrar</span> na sua conta</legend>
+          <p class="form__description">Insira seu email abaixo para entrar na sua conta.</p>
+          <label class="form__input" for="">
+            <span>Email</span>
+            <input type="email" name="email" id="" placeholder="email@address.com">
+          </label>
+  
+          <label class="form__input" for="">
+            <span>Senha</span>
+            <input type="password" name="password" id="" placeholder="Insira sua senha">
+          </label>
+        </fieldset>
+  
+        <button form="login-form" type="submit" class="form__button">Entrar</button>
+  
+        <span class="form__links">
+          <a href="">Esqueceu sua senha?</a>
+          Não tem uma conta?
+          <a href="./cadastro.html">Cadastre-se</a>
+        </span>
+      </form>
     </main>
-</body>
+  </body>
 </html>
