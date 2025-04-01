@@ -125,3 +125,6 @@ main {
   color: var(--primary-500-70);
   text-decoration: underline;
 }
+.input-error {
+  color: red;
+}

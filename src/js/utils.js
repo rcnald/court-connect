@@ -8,3 +8,7 @@ export function formatToCPF(value) {
     .replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3') 
     .replace(/\.(\d{3})(\d)/, '.$1-$2')
 }
+
+export function formatToNumeric(value){
+  return value.replace(/\D/g, '')
+}
