@@ -1,4 +1,4 @@
-import { formatToCPF, formatToNumeric } from './utils.js'
+import { formatToCPF, formatToNumeric, randomUUID } from './utils.js'
 
 let userTypeCounterOnCpfInputOnCpfInput = 0
 let isRegisterFormValid = false
@@ -7,11 +7,13 @@ const registerForm = document.getElementById('register-form')
 
 const registerCpf = document.getElementById('register-cpf')
 const registerEmail = document.getElementById('register-email')
+const registerName = document.getElementById('register-name')
 const registerPassword = document.getElementById('register-password')
 const registerConfirmPassword = document.getElementById('register-confirm-password')
 
 const registerCpfError = document.getElementById('register-cpf-error')
 const registerEmailError = document.getElementById('register-email-error')
+const registerNameError = document.getElementById('register-name-error')
 const registerPasswordError = document.getElementById('register-password-error')
 const registerConfirmPasswordError = document.getElementById('register-confirm-password-error')
 
@@ -21,7 +23,7 @@ registerCpf.addEventListener('keydown', (e) => {
   }
 
   if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && e.key !== ' ') {
-    if(userTypeCounterOnCpfInputOnCpfInput < 11) userTypeCounterOnCpfInputOnCpfInput++
+    if (userTypeCounterOnCpfInputOnCpfInput < 11) userTypeCounterOnCpfInputOnCpfInput++
   }
 
   if (e.key === 'Backspace' && userTypeCounterOnCpfInputOnCpfInput > 0) userTypeCounterOnCpfInputOnCpfInput--
@@ -45,19 +47,20 @@ registerForm.addEventListener('submit', (e) => {
   e.preventDefault()
 
   if (
-    registerCpf.value === "" || 
-    registerEmail.value === "" || 
-    registerPassword.value === "" || 
+    registerCpf.value === "" ||
+    registerEmail.value === "" ||
+    registerName.value === "" ||
+    registerPassword.value === "" ||
     registerConfirmPassword.value === "" ||
     userTypeCounterOnCpfInputOnCpfInput !== 11 ||
-    registerPassword.value !== registerConfirmPassword.value 
+    registerPassword.value !== registerConfirmPassword.value
   ) {
     isRegisterFormValid = false
   } else {
     isRegisterFormValid = true
   }
-  
-  
+
+
   if (registerConfirmPassword.value === "") {
     registerConfirmPasswordError.textContent = "Confirme sua senha.";
     registerConfirmPassword.focus()
@@ -65,7 +68,7 @@ registerForm.addEventListener('submit', (e) => {
     registerConfirmPasswordError.textContent = "As senha não coincidem!";
     registerConfirmPassword.focus()
   }
-  
+
   else {
     registerConfirmPasswordError.textContent = "";
   }
@@ -83,7 +86,7 @@ registerForm.addEventListener('submit', (e) => {
   } else if (userTypeCounterOnCpfInputOnCpfInput !== 11) {
     registerCpfError.textContent = "Preencha o campo CPF corretamente."
     registerCpf.focus()
-  }  else {
+  } else {
     registerCpfError.textContent = "";
   }
 
@@ -93,12 +96,20 @@ registerForm.addEventListener('submit', (e) => {
   } else {
     registerEmailError.textContent = "";
   }
-  
-  if(!isRegisterFormValid) return
+
+  if (registerName.value === "") {
+    registerNameError.textContent = "Preencha o campo nome.";
+    registerName.focus()
+  } else {
+    registerNameError.textContent = "";
+  }
+
+  if (!isRegisterFormValid) return
 
   const data = new FormData(e.currentTarget)
 
   const email = data.get('email')
+  const name = data.get('name')
   const cpf = formatToNumeric(data.get('cpf'))
   const password = data.get('password')
 
@@ -110,11 +121,13 @@ registerForm.addEventListener('submit', (e) => {
     return account.email === email
   })
 
-  if(accountExists) {
+  if (accountExists) {
     return alert("Uma conta com esse email ja foi cadastrada!")
   }
 
-  window.localStorage.setItem('@court-connect:accounts', JSON.stringify([...previousAccounts, { email, cpf, password }]))
+  const accountId = randomUUID()
+
+  window.localStorage.setItem('@court-connect:accounts', JSON.stringify([...previousAccounts, { id: accountId, name, email, cpf, password }]))
 
   window.location.href = ""
 })

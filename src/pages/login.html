@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">
-    <script src="../script.js" defer></script>
-    <title>Court Connect | Login</title>
-  </head>
-  
-  <body>
-    <main>
-      <div class="logo">
-        <img class="logo__icon" src="../assets/logo.svg" alt="">
-        <span class="logo__name">Court <b>Connect</b></span>
-      </div>
-      <form class="form" id="login-form">
-        <fieldset class="form__container">
-          <legend class="form__title"><span>Entrar</span> na sua conta</legend>
-          <p class="form__description">Insira seu email abaixo para entrar na sua conta.</p>
-          <label class="form__input" for="">
-            <span>Email</span>
-            <input type="email" name="email" id="" placeholder="email@address.com">
-          </label>
-  
-          <label class="form__input" for="">
-            <span>Senha</span>
-            <input type="password" name="password" id="" placeholder="Insira sua senha">
-          </label>
-        </fieldset>
-  
-        <button form="login-form" type="submit" class="form__button">Entrar</button>
-  
-        <span class="form__links">
-          <a href="">Esqueceu sua senha?</a>
-          Não tem uma conta?
-          <a href="./cadastro.html">Cadastre-se</a>
-        </span>
-      </form>
-    </main>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">
+  <script src="../js/login.js" defer></script>
+  <title>Court Connect | Login</title>
+</head>
+
+<body>
+  <main>
+    <div class="logo">
+      <img class="logo__icon" src="../assets/logo.svg" alt="">
+      <span class="logo__name">Court <b>Connect</b></span>
+    </div>
+    <form class="form" id="login-form">
+      <fieldset class="form__container">
+        <legend class="form__title"><span>Entrar</span> na sua conta</legend>
+        <p class="form__description">Insira seu email abaixo para entrar na sua conta.</p>
+        <label class="form__input" for="login-email">
+          <span>Email</span>
+          <input type="email" name="email" id="login-email" placeholder="email@address.com">
+          <span class="input-error" id="login-email-error"></span>
+        </label>
+
+        <label class="form__input" for="login-password">
+          <span>Senha</span>
+          <input type="password" name="password" id="login-password" placeholder="Insira sua senha">
+          <span class="input-error" id="login-password-error"></span>
+        </label>
+      </fieldset>
+
+      <button form="login-form" type="submit" class="form__button">Entrar</button>
+
+      <span class="form__links">
+        <a href="">Esqueceu sua senha?</a>
+        Não tem uma conta?
+        <a href="./cadastro.html">Cadastre-se</a>
+      </span>
+    </form>
+  </main>
+</body>
+
 </html>

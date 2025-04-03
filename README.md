@@ -81,7 +81,7 @@ O sistema visa automatizar o agendamento de eventos esportivos, proporcionando a
 
 ## 4. Requisitos Funcionais
 
-- [ ] **RF001 – Cadastro de jogadores**  
+- [x] **RF001 – Cadastro de jogadores**  
   Tela com nome, e-mail, CPF e senha. Link para login se já for cadastrado.
 
 - [x] **RF002 – Login de jogadores**  
@@ -119,7 +119,7 @@ O sistema visa automatizar o agendamento de eventos esportivos, proporcionando a
 
 ## 6. Requisitos Não Funcionais
 
-- [ ] **RNF001 – Persistência dos dados de login**  
+- [x]  **RNF001 – Persistência dos dados de login**  
   Autenticação armazenada em Local Storage.
 
 - [ ] **RNF002 – Layout responsivo**  
