@@ -129,5 +129,5 @@ registerForm.addEventListener('submit', (e) => {
 
   window.localStorage.setItem('@court-connect:accounts', JSON.stringify([...previousAccounts, { id: accountId, name, email, cpf, password }]))
 
-  window.location.href = ""
+  window.location.href = "login.html"
 })
