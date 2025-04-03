@@ -3,12 +3,6 @@
 
 # Gerenciamento – Court Connect  
 
-## Conta demonstração
-```http
-e-mail: admin@admin.com
-senha: adminadmin
-```
-
 ## Documento de Requisitos  
 **Versão:** 1.0  
 **Data:** 12/03/2025  
