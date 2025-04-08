@@ -1,7 +1,8 @@
 import { formatToCPF, formatToNumeric, randomUUID } from './utils.js'
 
-let userTypeCounterOnCpfInputOnCpfInput = 0
 let isRegisterFormValid = false
+
+let cpfValue = ""
 
 const registerForm = document.getElementById('register-form')
 
@@ -18,21 +19,21 @@ const registerPasswordError = document.getElementById('register-password-error')
 const registerConfirmPasswordError = document.getElementById('register-confirm-password-error')
 
 registerCpf.addEventListener('keydown', (e) => {
-  if (userTypeCounterOnCpfInputOnCpfInput >= 11 && e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && e.key !== ' ') {
+  if (cpfValue.length >= 11 && e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && e.key !== ' ') {
     e.preventDefault()
   }
 
-  if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && e.key !== ' ') {
-    if (userTypeCounterOnCpfInputOnCpfInput < 11) userTypeCounterOnCpfInputOnCpfInput++
+  if (e.key === 'Backspace') {
+    cpfValue = cpfValue.slice(0, cpf.length - 1)
   }
-
-  if (e.key === 'Backspace' && userTypeCounterOnCpfInputOnCpfInput > 0) userTypeCounterOnCpfInputOnCpfInput--
 })
 
 registerCpf.addEventListener('input', (e) => {
-  if (userTypeCounterOnCpfInputOnCpfInput <= 11) {
-    e.currentTarget.value = formatToCPF(e.currentTarget.value);
-  }
+  e.preventDefault()
+
+  cpfValue = cpfValue.concat(e.data ? e.data.replace(/\D/g, '') : "")
+
+  e.currentTarget.value = formatToCPF(cpfValue);
 })
 
 registerCpf.addEventListener('click', (e) => {
@@ -52,14 +53,13 @@ registerForm.addEventListener('submit', (e) => {
     registerName.value === "" ||
     registerPassword.value === "" ||
     registerConfirmPassword.value === "" ||
-    userTypeCounterOnCpfInputOnCpfInput !== 11 ||
+    cpfValue.length !== 11 ||
     registerPassword.value !== registerConfirmPassword.value
   ) {
     isRegisterFormValid = false
   } else {
     isRegisterFormValid = true
   }
-
 
   if (registerConfirmPassword.value === "") {
     registerConfirmPasswordError.textContent = "Confirme sua senha.";
@@ -83,7 +83,7 @@ registerForm.addEventListener('submit', (e) => {
   if (registerCpf.value === "") {
     registerCpfError.textContent = "Preencha o campo CPF.";
     registerCpf.focus()
-  } else if (userTypeCounterOnCpfInputOnCpfInput !== 11) {
+  } else if (cpfValue.length !== 11) {
     registerCpfError.textContent = "Preencha o campo CPF corretamente."
     registerCpf.focus()
   } else {
@@ -103,8 +103,10 @@ registerForm.addEventListener('submit', (e) => {
   } else {
     registerNameError.textContent = "";
   }
+  console.log(isRegisterFormValid)
 
   if (!isRegisterFormValid) return
+
 
   const data = new FormData(e.currentTarget)
 
