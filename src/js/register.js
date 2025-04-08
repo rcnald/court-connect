@@ -24,7 +24,7 @@ registerCpf.addEventListener('keydown', (e) => {
   }
 
   if (e.key === 'Backspace') {
-    cpfValue = cpfValue.slice(0, cpf.length - 1)
+    cpfValue = cpfValue.slice(0, cpfValue.length - 1)
   }
 })
 
