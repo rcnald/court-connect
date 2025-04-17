@@ -1,6 +1,6 @@
 const session = JSON.parse(window.localStorage.getItem('@court-connect:session'))
 
-if (session) window.location.href = "home"
+if (session) window.location.href = "home.html"
 
 let isLoginFormValid = false
 
