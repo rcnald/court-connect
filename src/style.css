@@ -11,6 +11,7 @@
 :root {
   --neutral-950: #000;
   --neutral-60: #F8FBFF;
+  --neutral-70: #F5F6F8;
   --neutral-50: #FFF;
   --primary-100: #7D8086;
   --primary-200: #586071;
@@ -501,4 +502,145 @@ header.subscriptions {
 
 .team-details .detail {
   display: flex;
+}
+
+.status-tab {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-top: 2px solid #E6E9ED;
+  border-bottom: 2px solid #E6E9ED;
+}
+
+.status-tab__container {
+  width: 100%;
+  max-width: 1060px;
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.tab {
+  position: relative;
+  padding-block: 20px;
+  color: #7d80867a;
+  cursor: pointer;
+}
+
+.tab[data-selected]{
+  background: -webkit-linear-gradient(var(--gradient));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tab[data-selected]::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(var(--gradient)); 
+  bottom: -2px;
+  left: 0;
+  position: absolute;
+
+}
+
+.subscriptions__title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+body.subscriptions main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  margin-top: 40px;
+  max-width: 1060px;
+}
+
+.subscriptions__lead {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.subscriptions__quantity {
+  color: var(--primary-100);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.subscriptions__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subscriptions__info button {
+  background: var(--neutral-950);
+  color: var(--neutral-60);
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.subscriptions__table {
+  width: 100%;
+  border-radius: 4px;
+  border-collapse: separate;
+  overflow: hidden;
+  border-spacing: 0;
+  border: 1px solid #E6E9ED;
+}
+
+.subscriptions__table thead tr th {
+  background: var(--neutral-70);
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.subscriptions__table thead th {
+  text-align: start;
+  text-transform: uppercase;
+  padding-block: 10px;
+  padding-inline: 16px;
+}
+
+.subscriptions__table tbody td {
+  padding-block: 10px;
+  padding-inline: 16px;
+}
+
+.subscriptions__table thead {
+  border: 1px solid #E6E9ED;
+}
+
+.subscriptions__table tr {
+  color: var(--primary-100);
+}
+
+.subscriptions__table .status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subscriptions__table .status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.subscriptions__table .available .status-dot {
+  background-color: #22c55e; /* verde */
+}
+
+.subscriptions__table .closed .status-dot {
+  background-color: #ef4444; /* vermelho */
+}
+
+.subscriptions__table a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.subscriptions__table a:hover {
+  text-decoration: underline;
 }
