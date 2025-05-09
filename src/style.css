@@ -11,6 +11,7 @@
 :root {
   --neutral-950: #000;
   --neutral-60: #F8FBFF;
+  --neutral-70: #F5F6F8;
   --neutral-50: #FFF;
   --primary-100: #7D8086;
   --primary-200: #586071;
@@ -451,10 +452,12 @@ header.subscriptions {
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  max-width: 400px;
+  max-width: 600px;
   gap: 8px;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  flex-direction: column;
+  gap: 12px;
 
   top: 50%;
   transform: translateY(-50%);
@@ -481,6 +484,77 @@ header.subscriptions {
   width: min-content;
 }
 
+.team-details .current-position {
+  background-color: #d1d5db;
+  /* Tailwind's gray-300 */
+  padding: 12px 16px;
+  border-radius: 6px;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  color: #111827;
+  /* Tailwind's gray-900 */
+  font-size: 14px;
+}
+
+.team-details .current-position div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.team-details .current-position>div>span {
+  font-weight: 600;
+  display: flex;
+}
+
+.team-details .current-position>span {
+  color: #0e141ea7;
+  font-size: 14px;
+}
+
+
+.team-details .current-position>span>a {
+  color: #0e141ea7;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+
+.team-details .current-position span img {
+  width: 16px;
+  height: 16px;
+}
+
+
+.team-details button {
+  background: var(--neutral-950);
+  color: var(--neutral-60);
+  padding: 16px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.team-details hr {
+  height: 1px;
+  width: 100%;
+  border: #7d808632 1px solid;
+}
+
+
+.team-details .container:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.team-details .container--positions { 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-y: auto;
+}
+
 .team-details .head {
   display: flex;
   gap: 8px;
@@ -492,13 +566,205 @@ header.subscriptions {
 
 .team-details h2 {
   font-size: 16px;
+  font-weight: normal;
 }
 
 .team-details .details {
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .team-details .detail {
   display: flex;
+}
+
+.status-tab {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-top: 2px solid #E6E9ED;
+  border-bottom: 2px solid #E6E9ED;
+}
+
+.status-tab__container {
+  width: 100%;
+  max-width: 1060px;
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.tab {
+  position: relative;
+  padding-block: 20px;
+  color: #7d80867a;
+  cursor: pointer;
+}
+
+.tab[data-selected] {
+  background: -webkit-linear-gradient(var(--gradient));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tab[data-selected]::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(var(--gradient));
+  bottom: -2px;
+  left: 0;
+  position: absolute;
+
+}
+
+.subscriptions__title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+body.subscriptions main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  margin-top: 40px;
+  max-width: 1060px;
+}
+
+.subscriptions__lead {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.subscriptions__quantity {
+  color: var(--primary-100);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.subscriptions__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subscriptions__info button {
+  background: var(--neutral-950);
+  color: var(--neutral-60);
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.subscriptions__table {
+  width: 100%;
+  border-radius: 4px;
+  border-collapse: separate;
+  overflow: hidden;
+  border-spacing: 0;
+  border: 1px solid #E6E9ED;
+}
+
+.subscriptions__table thead tr th {
+  background: var(--neutral-70);
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.subscriptions__table thead th {
+  text-align: start;
+  text-transform: uppercase;
+  padding-block: 10px;
+  padding-inline: 16px;
+}
+
+.subscriptions__table tbody td {
+  padding-block: 10px;
+  padding-inline: 16px;
+}
+
+.subscriptions__table thead {
+  border: 1px solid #E6E9ED;
+}
+
+.subscriptions__table tr {
+  color: var(--primary-100);
+}
+
+.subscriptions__table .status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subscriptions__table .status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.subscriptions__table .available .status-dot {
+  background-color: #22c55e;
+  /* verde */
+}
+
+.subscriptions__table .closed .status-dot {
+  background-color: #ef4444;
+  /* vermelho */
+}
+
+.subscriptions__table a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.subscriptions__table a:hover {
+  text-decoration: underline;
+}
+
+.position {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  background-color: white;
+  font-family: sans-serif;
+  transition: background-color 0.3s, border-color 0.3s;
+  background-color: white;
+  border-color: #e0e0e0;
+  color: #000;
+  cursor: pointer;
+}
+
+.position .position__radio {
+  margin-top: 5px;
+}
+
+.position .content {
+  display: flex;
+  flex-direction: column;
+}
+
+.position:has(.position__radio:disabled) {
+  background-color: #e0e0e0;
+  border-color: #d0d0d0;
+  color: #888;
+}
+
+.position:has(.position__radio:disabled) .jogador {
+  text-decoration: underline;
+  color: #666;
+}
+
+.position:has(.position__radio:checked) {
+  background-color: #e0f9e4;
+  border-color: #3ac267;
+  color: #000;
+}
+
+.position:has(.position__radio:checked) .position__radio {
+  accent-color: #3ac267;
 }
