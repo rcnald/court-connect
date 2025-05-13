@@ -1,12 +1,7 @@
 const weatherDisplay = document.getElementById('weather-display');
-const showWeather = document.getElementsByClassName('show-weather')
 
 const dialog = document.getElementById('details-dialog')
 
-Array.from(showWeather).forEach((button) => {
-  button.removeEventListener('click', fetchWeather)
-  button.addEventListener('click', fetchWeather)
-})
 
 async function fetchWeather() {
   const cityName = "sao paulo"
@@ -31,6 +26,4 @@ async function fetchWeather() {
   } catch (error) {
     console.error("fetchWeather: Erro capturado:", error);
   }
-
-  dialog.showModal()
 }

@@ -526,13 +526,30 @@ header.subscriptions {
   height: 16px;
 }
 
+.team-details .actions {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
 
-.team-details button {
+
+.team-details .actions button:not(button.variant-outline) {
   background: var(--neutral-950);
   color: var(--neutral-60);
   padding: 16px 16px;
   border-radius: 4px;
   cursor: pointer;
+  flex: 1;
+}
+
+.team-details .actions button.variant-outline {
+  border: 1px solid var(--neutral-950);
+  background: var(--neutral-60);
+  color: var(--neutral-950);
+  padding: 16px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-basis: 200px;
 }
 
 .team-details hr {

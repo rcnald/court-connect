@@ -18,3 +18,12 @@ export function randomUUID() {
     (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
   );
 }
+
+export function formatDate(dateStr) {
+  const [year, month, day] = dateStr.split('-');
+  return `${day}/${month}/${year}`;
+}
+
+export function capitalize(str) {
+  return str.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+}
