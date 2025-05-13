@@ -8,7 +8,9 @@
     <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="../js/weather.js" defer></script>
+    <script src="../js/teams-modal.js" type="module" defer></script>
+    <script src="../js/load-teams-list.js" type="module" defer></script>
+    <script src="../js/api/weather.js" defer></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
@@ -55,7 +57,7 @@
 
         </div>
         <div class="container container--positions">
-            <label class="position" for="uuid1">
+            <!-- <label class="position" for="uuid1">
                 <input class="position__radio" type="radio" name="position" id="uuid1" />
                 <div class="content">
                     <strong>Armador</strong>
@@ -86,9 +88,12 @@
                     <strong>Armador</strong>
                     <p>Status: Disponível</p>
                 </div>
-            </label>
+            </label> -->
         </div>
-        <button onclick="dialog.close()">Fechar</button>
+        <div class="actions">
+            <button id="submit-subscribe">Inscrever-se</button>
+            <button class="variant-outline" onclick="dialog.close()">Fechar</button>
+        </div>
     </dialog>
 
     <div class="logo">
@@ -139,8 +144,9 @@
                 </button>
             </form>
 
-            <ul class="grid">
-                <li class="team show-weather">
+            <ul class="grid" id="team-list">
+                
+                <!-- <li class="team show-weather">
                     <img src="../assets/team-photo-skeleton.jpg" alt="">
                     <div class="team__container">
                         <h1>Panteras</h1>
@@ -153,63 +159,7 @@
                         </div>
                         disponível
                     </div>
-                </li>
-                <li class="team show-weather">
-                    <img src="../assets/team-photo-skeleton.jpg" alt="">
-                    <div class="team__container">
-                        <h1>Panteras</h1>
-                    </div>
-                    <hr class="team__separator">
-                    <div class="team__status">
-                        <div class="circle">
-                            <div class="dot"></div>
-                            <div class="outline"></div>
-                        </div>
-                        disponível
-                    </div>
-                </li>
-                <li class="team show-weather">
-                    <img src="../assets/team-photo-skeleton.jpg" alt="">
-                    <div class="team__container">
-                        <h1>Panteras</h1>
-                    </div>
-                    <hr class="team__separator">
-                    <div class="team__status">
-                        <div class="circle">
-                            <div class="dot"></div>
-                            <div class="outline"></div>
-                        </div>
-                        disponível
-                    </div>
-                </li>
-                <li class="team show-weather">
-                    <img src="../assets/team-photo-skeleton.jpg" alt="">
-                    <div class="team__container">
-                        <h1>Panteras</h1>
-                    </div>
-                    <hr class="team__separator">
-                    <div class="team__status">
-                        <div class="circle">
-                            <div class="dot"></div>
-                            <div class="outline"></div>
-                        </div>
-                        disponível
-                    </div>
-                </li>
-                <li class="team show-weather">
-                    <img src="../assets/team-photo-skeleton.jpg" alt="">
-                    <div class="team__container">
-                        <h1>Panteras</h1>
-                    </div>
-                    <hr class="team__separator">
-                    <div class="team__status">
-                        <div class="circle">
-                            <div class="dot"></div>
-                            <div class="outline"></div>
-                        </div>
-                        disponível
-                    </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </main>
