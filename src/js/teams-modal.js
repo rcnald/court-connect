@@ -1,4 +1,26 @@
-import { capitalize, formatDate } from './utils.js';
+import { capitalize, formatDate, getPlayerById, logout } from './utils.js';
+
+const session = JSON.parse(window.localStorage.getItem('@court-connect:session'))
+
+const profileDiv = document.querySelector('.profile');
+
+if (session) {
+  profileDiv.innerHTML = `
+    <span>Olá, <b><a href="./subscriptions.html">${getPlayerById(session.id).name}</a></b></span>
+    <img src="../assets/profile.png" alt="">
+    <button class="logout" id="logout">Sair</button>
+  `;
+
+  profileDiv.querySelector("#logout").addEventListener('click', () => {
+    logout()
+    window.location.href = './home.html'
+  })
+
+} else {
+  profileDiv.innerHTML = `
+    <a href="./login.html" class="login-link">Entrar</a>
+  `;
+}
 
 export function populateTeamDetailsDialog(data) {
   const dialog = document.getElementById('details-dialog');
@@ -23,11 +45,21 @@ export function populateTeamDetailsDialog(data) {
   const subscribeBtn = document.getElementById('submit-subscribe')
 
     subscribeBtn.addEventListener('click', () => {
+    
+
       const selected = container.querySelector('input[name="position"]:checked');
       if (!selected) {
         alert("Selecione uma posição disponível.");
         return;
       }
+
+      const session = JSON.parse(window.localStorage.getItem('@court-connect:session'))
+
+      if(!session) {
+        alert("Para se inscrever em alguma partida é necessário estar logado!");
+        return window.location.href = "login.html"
+      }
+
       const selectedPosition = selected.value;
       const success = assignPlayerToPosition(String(data.id), selectedPosition);
 
@@ -113,18 +145,6 @@ function attachPositionListeners() {
       linkSpan.href = `#${positionName.toLowerCase()}`; // You can customize this URL logic
     });
   });
-}
-
-function getPlayerById(playerId) {
-  const accounts = JSON.parse(localStorage.getItem('@court-connect:accounts')) || [];
-
-  const player = accounts.find(account => account.id === playerId);
-
-  if (!player) {
-    return null;
-  }
-
-  return player;
 }
 
 function assignPlayerToPosition(teamId, position) {

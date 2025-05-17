@@ -8,6 +8,7 @@
   <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="../js/subscribed-teams-list.js" type="module" defer></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
@@ -16,10 +17,10 @@
 
 <body class="subscriptions">
   <header class="subscriptions">
-    <div class="logo">
+    <a href="./home.html" class="logo">
       <img class="logo__icon" src="../assets/logo.svg" alt="">
       <span class="logo__name">Court <b>Connect</b></span>
-    </div>
+    </a>
 
     <form class="header__search">
       <div class="positions">
@@ -74,7 +75,7 @@
         <h1 class="subscriptions__title">Todas as equipes</h1>
         <span class="subscriptions__quantity">20 equipes</span>
       </div>
-      <button>
+      <button onclick="window.location.href = './home.html'">
         <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M7.83333 3.33333H5.16667V0.666667C5.16667 0.489856 5.09643 0.320287 4.9714 0.195262C4.84638 0.070238 4.67681 0 4.5 0C4.32319 0 4.15362 0.070238 4.0286 0.195262C3.90357 0.320287 3.83333 0.489856 3.83333 0.666667V3.33333H1.16667C0.989856 3.33333 0.820287 3.40357 0.695262 3.5286C0.570238 3.65362 0.5 3.82319 0.5 4C0.5 4.17681 0.570238 4.34638 0.695262 4.4714C0.820287 4.59643 0.989856 4.66667 1.16667 4.66667H3.83333V7.33333C3.83333 7.51014 3.90357 7.67971 4.0286 7.80474C4.15362 7.92976 4.32319 8 4.5 8C4.67681 8 4.84638 7.92976 4.9714 7.80474C5.09643 7.67971 5.16667 7.51014 5.16667 7.33333V4.66667H7.83333C8.01014 4.66667 8.17971 4.59643 8.30474 4.4714C8.42976 4.34638 8.5 4.17681 8.5 4C8.5 3.82319 8.42976 3.65362 8.30474 3.5286C8.17971 3.40357 8.01014 3.33333 7.83333 3.33333Z"
