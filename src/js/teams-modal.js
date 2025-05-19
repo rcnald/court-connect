@@ -22,7 +22,37 @@ if (session) {
   `;
 }
 
+const subscribePlayerToTeam = (playerId) => {
+  const container = dialog.querySelector('.container--positions');
+
+  const selected = container.querySelector('input[name="position"]:checked');
+  if (!selected) {
+    alert("Selecione uma posição disponível.");
+    return;
+  }
+
+  const session = JSON.parse(window.localStorage.getItem('@court-connect:session'))
+
+  if (!session) {
+    alert("Para se inscrever em alguma partida é necessário estar logado!");
+    return window.location.href = "login.html"
+  }
+
+  const selectedPosition = selected.value;
+  const success = assignPlayerToPosition(playerId, selectedPosition);
+
+  if (success) {
+    alert(`Inscrição feita com sucesso para a posição "${selectedPosition}".`);
+    dialog.close();
+  } else {
+    alert("Erro: não foi possível se inscrever. Verifique se a posição está disponível ou se você já está neste time.");
+  }
+}
+
 export function populateTeamDetailsDialog(data) {
+  
+  const subscribeBtn = document.getElementById('submit-subscribe')
+
   const dialog = document.getElementById('details-dialog');
 
   const statusSpan = dialog.querySelector('.status');
@@ -38,39 +68,13 @@ export function populateTeamDetailsDialog(data) {
   details[2].textContent = data.details.address;
   details[3].textContent = "Indisponível";
 
-  const container = dialog.querySelector('.container--positions');
-
   renderPositionsFromStorage(data.id)
 
-  const subscribeBtn = document.getElementById('submit-subscribe')
+  function handleSubscribeClick() {
+    subscribePlayerToTeam(data.id);
+  }
 
-    subscribeBtn.addEventListener('click', () => {
-    
-
-      const selected = container.querySelector('input[name="position"]:checked');
-      if (!selected) {
-        alert("Selecione uma posição disponível.");
-        return;
-      }
-
-      const session = JSON.parse(window.localStorage.getItem('@court-connect:session'))
-
-      if(!session) {
-        alert("Para se inscrever em alguma partida é necessário estar logado!");
-        return window.location.href = "login.html"
-      }
-
-      const selectedPosition = selected.value;
-      const success = assignPlayerToPosition(String(data.id), selectedPosition);
-
-      if (success) {
-        alert(`Inscrição feita com sucesso para a posição "${selectedPosition}".`);
-        dialog.close();
-      } else {
-        alert("Erro: não foi possível se inscrever. Verifique se a posição está disponível ou se você já está neste time.");
-      }
-    })
-
+  subscribeBtn.onclick = handleSubscribeClick
 
   dialog.showModal();
   attachPositionListeners()
@@ -148,16 +152,16 @@ function attachPositionListeners() {
 }
 
 function assignPlayerToPosition(teamId, position) {
-  const localData  = JSON.parse(localStorage.getItem("@court-connect:teams")) || { teams: {} }
+  const localData = JSON.parse(localStorage.getItem("@court-connect:teams")) || { teams: {} }
   const user = JSON.parse(localStorage.getItem("@court-connect:session")) || null
 
-  if (!localData .teams[teamId]) {
+  if (!localData.teams[teamId]) {
     return false;
   }
 
-  const teamPositions = localData .teams[teamId];
+  const teamPositions = localData.teams[teamId];
 
-  if (teamPositions[position] !== null) { 
+  if (teamPositions[position] !== null) {
     return false;
   }
 

@@ -87,13 +87,23 @@ function getPlayerPosition(teamId, playerId) {
   return 'N/A';
 }
 
-function appendPlayerTeamsToTable(playerId) {
+const searchInput = document.querySelector('.team-name');
+searchInput.addEventListener('input', () => {
+  appendPlayerTeamsToTable(session.id, searchInput.value);
+});
+
+
+function appendPlayerTeamsToTable(playerId, filter = '') {
   const tbody = document.querySelector('.subscriptions__table tbody');
-  const teamsArray = getTeamsDataByPlayerId(playerId);
+  const allTeams = getTeamsDataByPlayerId(playerId);
+
+  const filteredTeams = allTeams.filter(team =>
+    team.team_name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   tbody.innerHTML = '';
 
-  if (teamsArray.length === 0) {
+  if (filteredTeams.length === 0) {
     const emptyRow = `
       <tr>
         <td colspan="5" style="text-align: center; padding: 1em;">Você não está inscrito em nenhuma partida</td>
@@ -103,7 +113,7 @@ function appendPlayerTeamsToTable(playerId) {
     return;
   }
 
-  teamsArray.forEach(team => {
+  filteredTeams.forEach(team => {
     const rowHTML = generateTableRow(team, playerId);
     tbody.insertAdjacentHTML('beforeend', rowHTML);
   });

@@ -234,6 +234,7 @@ main.auth {
 .home__search {
   display: flex;
   border: 1px #E6E9ED solid;
+  background: #fff;
   border-radius: 4px;
   overflow: hidden;
   padding-inline: 16px;
@@ -618,6 +619,7 @@ header.subscriptions {
   width: 100%;
   max-width: 1060px;
   display: flex;
+  
   width: 100%;
   gap: 20px;
 }
@@ -627,15 +629,28 @@ header.subscriptions {
   padding-block: 20px;
   color: #7d80867a;
   cursor: pointer;
+  user-select: none;
 }
 
-.tab[data-selected] {
+.tab input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tab:has(input[type="radio"]:checked) {
   background: -webkit-linear-gradient(var(--gradient));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.tab[data-selected]::after {
+.tab:has(input[type="radio"]:checked)::after {
   content: "";
   width: 100%;
   height: 2px;

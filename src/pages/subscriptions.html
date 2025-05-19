@@ -61,12 +61,30 @@
 
 
   <div class="status-tab">
-    <ul class="status-tab__container">
-      <li class="tab" data-selected>Todas (20)</li>
-      <li class="tab">Disponíveis (5)</li>
-      <li class="tab">Fechados (15)</li>
-    </ul>
+    <form id="statusFilterForm" class="status-tab__container">
+      <label class="tab">
+        <input type="radio" name="statusFilter" value="all">
+        Todas (20)
+      </label>
+      <label class="tab">
+        <input type="radio" name="statusFilter" value="available">
+        Disponíveis (5)
+      </label>
+      <label class="tab">
+        <input type="radio" name="statusFilter" value="closed">
+        Fechados (15)
+      </label>
+    </form>
   </div>
+
+
+  <!-- document.getElementById('statusFilterForm').addEventListener('change', function(event) {
+    const selectedValue = event.target.value;
+    console.log("Filtro selecionado:", selectedValue);
+  
+    // Chame aqui sua função de filtragem
+    // exemplo: filterTeamsByStatus(selectedValue);
+  }); -->
 
 
   <main>
