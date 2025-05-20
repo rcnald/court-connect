@@ -92,14 +92,78 @@ searchInput.addEventListener('input', () => {
   appendPlayerTeamsToTable(session.id, searchInput.value);
 });
 
+const positionSelect = document.querySelector('.position-filter');
+positionSelect.addEventListener('change', () => {
+  appendPlayerTeamsToTable(session.id, searchInput.value, positionSelect.value);
+});
 
-function appendPlayerTeamsToTable(playerId, filter = '') {
+const statusRadios = document.querySelectorAll('input[name="statusFilter"]');
+
+statusRadios.forEach(radio => {
+  radio.addEventListener('change', () => {
+    const selectedStatus = radio.value;
+
+    appendPlayerTeamsToTable(session.id, searchInput.value, positionSelect.value, selectedStatus);
+  });
+});
+
+
+function updateStatusCounts(playerId, filter = '', position = 'all') {
+  const allTeams = getTeamsDataByPlayerId(playerId);
+
+  console.log(playerId)
+  console.log(filter)
+  console.log(position)
+
+  const filteredTeams = allTeams.filter(team => {
+    const matchesName = team.team_name.toLowerCase().includes(filter.toLowerCase());
+    const matchesPosition = position.toLowerCase() === 'all' || getPlayerPosition(team.id, playerId).toLowerCase() === position.toLowerCase();
+    return matchesName && matchesPosition;
+  });
+
+  const allCount = filteredTeams.length;
+  const availableCount = filteredTeams.filter(team => team.status === 'available').length;
+  const unavailableCount = filteredTeams.filter(team => team.status === 'unavailable').length;
+
+  document.getElementById('all-label').textContent = allCount;
+  document.getElementById('available-label').textContent = availableCount;
+  document.getElementById('unavailable-label').textContent = unavailableCount;
+}
+
+
+searchInput.addEventListener('input', () => {
+  appendPlayerTeamsToTable(session.id, searchInput.value, positionSelect.value, selectedStatus);
+  updateStatusCounts(session.id, searchInput.value, positionSelect.value);
+});
+
+positionSelect.addEventListener('change', () => {
+  appendPlayerTeamsToTable(session.id, searchInput.value, positionSelect.value, selectedStatus);
+  updateStatusCounts(session.id, searchInput.value, positionSelect.value);
+});
+
+let selectedStatus
+
+statusRadios.forEach(radio => {
+  radio.addEventListener('change', () => {
+    selectedStatus = radio.value;
+    appendPlayerTeamsToTable(session.id, searchInput.value, positionSelect.value, selectedStatus);
+    updateStatusCounts(session.id, searchInput.value, positionSelect.value);
+  });
+});
+
+
+
+function appendPlayerTeamsToTable(playerId, filter = '', position = 'all', status = 'all') {
   const tbody = document.querySelector('.subscriptions__table tbody');
   const allTeams = getTeamsDataByPlayerId(playerId);
 
-  const filteredTeams = allTeams.filter(team =>
-    team.team_name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const filteredTeams = allTeams.filter(team => {
+    const matchesName = team.team_name.toLowerCase().includes(filter.toLowerCase());
+    const matchesPosition = position.toLowerCase() === 'all' || getPlayerPosition(team.id, playerId).toLowerCase() === position.toLowerCase();
+    const matchesStatus = status === 'all' || team.status === status;
+
+    return matchesName && matchesPosition && matchesStatus;
+  });
 
   tbody.innerHTML = '';
 
@@ -118,5 +182,5 @@ function appendPlayerTeamsToTable(playerId, filter = '') {
     tbody.insertAdjacentHTML('beforeend', rowHTML);
   });
 }
-
 appendPlayerTeamsToTable(session.id)
+updateStatusCounts(session.id);

@@ -24,9 +24,14 @@
 
     <form class="header__search">
       <div class="positions">
-        <select>
-          <option value="" selected disabled>Posição</option>
+        <select class="position-filter">
+          <option value="all" selected disabled>Posição</option>
+          <option value="all">Todos</option>
+          <option value="Armador">Armador</option>
+          <option value="Zagueiro">Zagueiro</option>
+          <option value="Atacante">Atacante</option>
         </select>
+
         <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M1.27325 0.971401H8.72658C8.85843 0.971954 8.98715 1.01159 9.09648 1.0853C9.2058 1.15901 9.29081 1.26348 9.34076 1.3855C9.39071 1.50752 9.40336 1.64161 9.3771 1.77082C9.35084 1.90003 9.28686 2.01855 9.19325 2.1114L5.47325 5.8314C5.41127 5.89389 5.33754 5.94348 5.2563 5.97733C5.17506 6.01118 5.08792 6.0286 4.99991 6.0286C4.91191 6.0286 4.82477 6.01118 4.74353 5.97733C4.66229 5.94348 4.58856 5.89389 4.52658 5.8314L0.80658 2.1114C0.712966 2.01855 0.648985 1.90003 0.622728 1.77082C0.596471 1.64161 0.609118 1.50752 0.659068 1.3855C0.709018 1.26348 0.79403 1.15901 0.903352 1.0853C1.01267 1.01159 1.1414 0.971954 1.27325 0.971401Z"
@@ -63,16 +68,16 @@
   <div class="status-tab">
     <form id="statusFilterForm" class="status-tab__container">
       <label class="tab">
-        <input type="radio" name="statusFilter" value="all">
-        Todas (20)
+        <input type="radio" name="statusFilter" value="all" data-status-label="all-label"> Todas (<span
+          id="all-label">0</span>)
       </label>
       <label class="tab">
-        <input type="radio" name="statusFilter" value="available">
-        Disponíveis (5)
+        <input type="radio" name="statusFilter" value="available" data-status-label="available-label"> Disponíveis
+        (<span id="available-label">0</span>)
       </label>
       <label class="tab">
-        <input type="radio" name="statusFilter" value="closed">
-        Fechados (15)
+        <input type="radio" name="statusFilter" value="unavailable" data-status-label="unavailable-label"> Fechados
+        (<span id="unavailable-label">0</span>)
       </label>
     </form>
   </div>
@@ -90,8 +95,7 @@
   <main>
     <div class="subscriptions__info">
       <div class="subscriptions__lead">
-        <h1 class="subscriptions__title">Todas as equipes</h1>
-        <span class="subscriptions__quantity">20 equipes</span>
+        <h1 class="subscriptions__title">Partidas</h1>
       </div>
       <button onclick="window.location.href = './home.html'">
         <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
