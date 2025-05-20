@@ -24,6 +24,10 @@
   --animation: 2s ease-in-out infinite;
 }
 
+button {
+  cursor: pointer;
+}
+
 .circle {
   position: relative;
   width: 8px;
@@ -73,8 +77,13 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  height: 100%;
   width: 100%;
   background: var(--neutral-60);
+}
+
+body.home {
+  justify-content: start;
 }
 
 body.subscriptions {
@@ -84,6 +93,7 @@ body.subscriptions {
 main.home {
   width: 100%;
   display: flex;
+  height: 100%;
   gap: 20px;
   justify-content: center;
   align-items: center;
@@ -224,6 +234,7 @@ main.auth {
 .home__search {
   display: flex;
   border: 1px #E6E9ED solid;
+  background: #fff;
   border-radius: 4px;
   overflow: hidden;
   padding-inline: 16px;
@@ -446,7 +457,7 @@ header.subscriptions {
   cursor: pointer;
 }
 
-.team-details {
+.team-details, .team-details-sub {
   padding: 2rem;
   border: none;
   border-radius: 10px;
@@ -465,17 +476,17 @@ header.subscriptions {
   font-family: sans-serif;
 }
 
-.team-details::backdrop {
+.team-details::backdrop,.team-details-sub::backdrop {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(2px);
 }
 
-.team-details[open] {
+.team-details[open],.team-details-sub[open]  {
   display: flex;
   flex-direction: column;
 }
 
-.team-details .status {
+.team-details .status, .team-details-sub .status {
   border-radius: 4px;
   padding: 4px 12px;
   font-size: 14px;
@@ -484,7 +495,7 @@ header.subscriptions {
   width: min-content;
 }
 
-.team-details .current-position {
+.team-details .current-position, .team-details-sub .current-position {
   background-color: #d1d5db;
   /* Tailwind's gray-300 */
   padding: 12px 16px;
@@ -496,44 +507,45 @@ header.subscriptions {
   font-size: 14px;
 }
 
-.team-details .current-position div {
+.team-details .current-position div, .team-details-sub .current-position div {
   display: flex;
   align-items: center;
   gap: 6px;
   margin-bottom: 4px;
 }
 
-.team-details .current-position>div>span {
+.team-details .current-position>div>span, .team-details-sub .current-position>div>span {
   font-weight: 600;
   display: flex;
 }
 
-.team-details .current-position>span {
+.team-details .current-position>span , .team-details-sub .current-position>span {
   color: #0e141ea7;
   font-size: 14px;
 }
 
 
-.team-details .current-position>span>a {
+.team-details .current-position>span>a, .team-details-sub .current-position>span>a {
   color: #0e141ea7;
   text-decoration: underline;
   font-weight: 500;
 }
 
 
-.team-details .current-position span img {
+.team-details .current-position span img, .team-details-sub .current-position span img  {
   width: 16px;
   height: 16px;
 }
 
-.team-details .actions {
+.team-details .actions, .team-details-sub .actions {
   width: 100%;
   display: flex;
   gap: 1rem;
 }
 
 
-.team-details .actions button:not(button.variant-outline) {
+.team-details .actions button:not(button.variant-outline), 
+.team-details-sub .actions button:not(button.variant-outline) {
   background: var(--neutral-950);
   color: var(--neutral-60);
   padding: 16px 16px;
@@ -542,7 +554,7 @@ header.subscriptions {
   flex: 1;
 }
 
-.team-details .actions button.variant-outline {
+.team-details .actions button.variant-outline, .team-details-sub .actions button.variant-outline {
   border: 1px solid var(--neutral-950);
   background: var(--neutral-60);
   color: var(--neutral-950);
@@ -552,47 +564,47 @@ header.subscriptions {
   flex-basis: 200px;
 }
 
-.team-details hr {
+.team-details hr, .team-details-sub hr {
   height: 1px;
   width: 100%;
   border: #7d808632 1px solid;
 }
 
 
-.team-details .container:first-child {
+.team-details .container:first-child, .team-details-sub .container:first-child {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.team-details .container--positions { 
+.team-details .container--positions, .team-details-sub .container--positions { 
   display: flex;
   flex-direction: column;
   width: 100%;
   overflow-y: auto;
 }
 
-.team-details .head {
+.team-details .head, .team-details-sub .head {
   display: flex;
   gap: 8px;
 }
 
-.team-details .head h1 {
+.team-details .head h1, .team-details-sub .head h1 {
   font-size: 24px;
 }
 
-.team-details h2 {
+.team-details h2, .team-details-sub h2  {
   font-size: 16px;
   font-weight: normal;
 }
 
-.team-details .details {
+.team-details .details, .team-details-sub .details {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-.team-details .detail {
+.team-details .detail, .team-details-sub .detail {
   display: flex;
 }
 
@@ -608,6 +620,7 @@ header.subscriptions {
   width: 100%;
   max-width: 1060px;
   display: flex;
+  
   width: 100%;
   gap: 20px;
 }
@@ -617,15 +630,28 @@ header.subscriptions {
   padding-block: 20px;
   color: #7d80867a;
   cursor: pointer;
+  user-select: none;
 }
 
-.tab[data-selected] {
+.tab input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tab:has(input[type="radio"]:checked) {
   background: -webkit-linear-gradient(var(--gradient));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.tab[data-selected]::after {
+.tab:has(input[type="radio"]:checked)::after {
   content: "";
   width: 100%;
   height: 2px;
@@ -739,7 +765,7 @@ body.subscriptions main {
   text-decoration: underline;
 }
 
-.position {
+.position, .position-display {
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -756,6 +782,10 @@ body.subscriptions main {
   cursor: pointer;
 }
 
+.position-display {
+  cursor: default;
+}
+
 .position .position__radio {
   margin-top: 5px;
 }
@@ -765,23 +795,23 @@ body.subscriptions main {
   flex-direction: column;
 }
 
-.position:has(.position__radio:disabled) {
+.position:has(.position__radio:disabled), .position-display[data-situation="unavailable"] {
   background-color: #e0e0e0;
   border-color: #d0d0d0;
   color: #888;
 }
 
-.position:has(.position__radio:disabled) .jogador {
+.position:has(.position__radio:disabled), .position-display[data-situation="unavailable"] .jogador {
   text-decoration: underline;
   color: #666;
 }
 
-.position:has(.position__radio:checked) {
+.position:has(.position__radio:checked), .position-display[data-situation="selected"] {
   background-color: #e0f9e4;
   border-color: #3ac267;
   color: #000;
 }
 
-.position:has(.position__radio:checked) .position__radio {
+.position:has(.position__radio:checked) .position__radio{
   accent-color: #3ac267;
 }

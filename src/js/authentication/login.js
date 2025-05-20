@@ -62,7 +62,7 @@ loginForm.addEventListener('submit', (e) => {
             window.localStorage.setItem('@court-connect:session', JSON.stringify({ id: account.id }))
 
 
-            return window.location.href = "/passou"
+            return window.location.href = "home.html"
         }
 
         return alert("Credenciais invalidas!")

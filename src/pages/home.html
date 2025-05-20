@@ -17,7 +17,7 @@
     <title>Court Connect | Home</title>
 </head>
 
-<body>
+<body class="home">
     <dialog id="details-dialog" class="team-details">
         <div class="container">
             <span class="status" data-status="available">disponível</span>
@@ -96,11 +96,25 @@
         </div>
     </dialog>
 
-    <div class="logo">
-        <img class="logo__icon" src="../assets/logo.svg" alt="">
-        <span class="logo__name">Court <b>Connect</b></span>
-    </div>
+    <header class="subscriptions">
+        <a href="./home.html" class="logo">
+            <img class="logo__icon" src="../assets/logo.svg" alt="">
+            <span class="logo__name">Court <b>Connect</b></span>
+        </a>
+
+        <div class="profile">
+            <span>Olá, <b>Ronaldo</b></span>
+            <img src="../assets/profile.png" alt="">
+            <button class="logout">Sair</button>
+        </div>
+    </header>
+
+
     <main class="home">
+        <div class="logo">
+            <img class="logo__icon" src="../assets/logo.svg" alt="">
+            <span class="logo__name">Court <b>Connect</b></span>
+        </div>
         <div class="home__header">
             <h1 class="home__title"><span>Equipes</span> disponíveis</h1>
             <p class="home__description">Escolha uma equipe, veja informações sobre treinadores, posições e agendas
@@ -145,7 +159,7 @@
             </form>
 
             <ul class="grid" id="team-list">
-                
+
                 <!-- <li class="team show-weather">
                     <img src="../assets/team-photo-skeleton.jpg" alt="">
                     <div class="team__container">
