@@ -16,6 +16,84 @@
 </head>
 
 <body class="subscriptions">
+  <dialog id="details-dialog-sub" class="team-details-sub">
+    <div class="container">
+        <span class="status" data-status="available">disponível</span>
+        <div class="head">
+            <img class="logo__icon" src="../assets/logo.svg" alt="">
+            <h1>Nome da equipe</h1>
+        </div>
+        <h2 class="coach"><b>Treinador:</b> nome do treinador</h2>
+        <div class="current-position">
+            <div>
+                <span>
+                    Posição:
+                </span>
+                Armador
+            </div>
+            <span>Veja em outras equipes: <a href="">armador</a></span>
+        </div>
+        <hr>
+        <ul class="details">
+            <li>
+                <b>Data:</b>
+                <span>17/03/2025</span>
+            </li>
+            <li>
+                <b>Horário:</b>
+                <span>12h00</span>
+            </li>
+            <li>
+                <b>Endereço:</b>
+                <span>Avenida Paulista, Bela Vista, 559, São Paulo, SP</span>
+            </li>
+            <li>
+                <b>Clima:</b>
+                <span id="weather-display">Indisponível</span>
+            </li>
+        </ul>
+
+    </div>
+    <div class="container container--positions">
+        <!-- <label class="position" for="uuid1">
+            <input class="position__radio" type="radio" name="position" id="uuid1" />
+            <div class="content">
+                <strong>Armador</strong>
+                <p>Status: Disponível</p>
+            </div>
+        </label>
+
+        <label class="position" for="uuid2">
+            <input class="position__radio" type="radio" name="position" id="uuid2" disabled />
+            <div class="content">
+                <strong>Armador</strong>
+                <p>Status: Indisponível</p>
+                <p class="jogador">Jogador: Ronaldo</p>
+            </div>
+        </label>
+
+        <label class="position" for="uuid3">
+            <input class="position__radio" type="radio" name="position" id="uuid3" />
+            <div class="content">
+                <strong>Armador</strong>
+                <p>Status: Disponível</p>
+            </div>
+        </label>
+
+        <label class="position" for="uuid4">
+            <input class="position__radio" type="radio" name="position" id="uuid4" />
+            <div class="content">
+                <strong>Armador</strong>
+                <p>Status: Disponível</p>
+            </div>
+        </label> -->
+    </div>
+    <div class="actions">
+        <button id="submit-unsubscribe">Desinscrever-se</button>
+        <button class="variant-outline" onclick="document.getElementById('details-dialog-sub').close()">Fechar</button>
+    </div>
+</dialog>
+
   <header class="subscriptions">
     <a href="./home.html" class="logo">
       <img class="logo__icon" src="../assets/logo.svg" alt="">

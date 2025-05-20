@@ -23,6 +23,8 @@ if (session) {
 }
 
 const subscribePlayerToTeam = (playerId) => {
+  const dialog = document.getElementById('details-dialog');
+
   const container = dialog.querySelector('.container--positions');
 
   const selected = container.querySelector('input[name="position"]:checked');
