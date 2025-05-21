@@ -216,6 +216,7 @@ function populateTeamDetailsDialogSub(data) {
   }
 
   unsubscribeBtn.onclick = handleUnsubscribeClick
+  unsubscribeBtn.disabled = data.status === 'unavailable'
 
   dialog.showModal();
 }

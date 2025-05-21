@@ -308,6 +308,14 @@ main.auth {
   cursor: pointer;
 }
 
+.team[data-stats="unavailable"] .dot  {
+  background-color: var(--red-color);
+}
+
+.team[data-stats="unavailable"] .outline  {
+  animation: none;
+}
+
 .team img {
   width: 80px;
   height: 80px;
@@ -493,6 +501,16 @@ header.subscriptions {
   color: #34D347;
   background: #34d34632;
   width: min-content;
+}
+
+.team-details .status[data-status="unavailable"], .team-details-sub .status[data-status="unavailable"] {
+  background-color: #e38975;
+  color: #e00909;
+}
+
+.team-details #submit-subscribe:disabled, .team-details-sub #submit-unsubscribe:disabled {
+  background-color: #464749;
+  cursor: not-allowed;
 }
 
 .team-details .current-position, .team-details-sub .current-position {
