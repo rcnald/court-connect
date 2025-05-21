@@ -1,5 +1,7 @@
 import { capitalize, formatDate, getPlayerById, logout } from './utils.js';
 
+import {teams} from './data/teams.js'
+
 const session = JSON.parse(window.localStorage.getItem('@court-connect:session'))
 
 const profileDiv = document.querySelector('.profile');
@@ -22,8 +24,10 @@ if (session) {
   `;
 }
 
-const subscribePlayerToTeam = (playerId) => {
+const subscribePlayerToTeam = (teamId) => {
   const dialog = document.getElementById('details-dialog');
+
+  const localData = JSON.parse(localStorage.getItem("@court-connect:teams")) || { teams: {} }
 
   const container = dialog.querySelector('.container--positions');
 
@@ -35,13 +39,18 @@ const subscribePlayerToTeam = (playerId) => {
 
   const session = JSON.parse(window.localStorage.getItem('@court-connect:session'))
 
+  if (teams.find(team => team.id === teamId).status !== 'available') {
+    alert("Este time está indisponível para alterações no momento.");
+    return;
+  }
+
   if (!session) {
     alert("Para se inscrever em alguma partida é necessário estar logado!");
     return window.location.href = "login.html"
   }
 
   const selectedPosition = selected.value;
-  const success = assignPlayerToPosition(playerId, selectedPosition);
+  const success = assignPlayerToPosition(teamId, selectedPosition);
 
   if (success) {
     alert(`Inscrição feita com sucesso para a posição "${selectedPosition}".`);
@@ -77,6 +86,7 @@ export function populateTeamDetailsDialog(data) {
   }
 
   subscribeBtn.onclick = handleSubscribeClick
+  subscribeBtn.disabled = data.status === 'unavailable'
 
   dialog.showModal();
   attachPositionListeners()
